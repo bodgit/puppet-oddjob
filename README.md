@@ -93,7 +93,7 @@ The optional contents of a D-Bus system bus configuration file.
 The name will be used to construct the filename for the helper configuration
 file of the form `${system_dir}/oddjobd-${name}.conf`. If a D-Bus system bus
 configuration file is desired the filename will be of the form
-`oddjob-${name.conf` usually under `/etc/dbus-1/system.d`.
+`oddjob-${name}.conf` usually under `/etc/dbus-1/system.d`.
 
 ### Examples
 
