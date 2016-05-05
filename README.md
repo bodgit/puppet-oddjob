@@ -106,7 +106,7 @@ include ::oddjob::mkhomedir
 ```
 
 It's then necessary to enable the `pam_oddjob_mkhomedir.so` PAM module somehow,
-which can require `Class[::oddjob::mkhomedir]` as a dependency.
+which can require `Class['::oddjob::mkhomedir']` as a dependency.
 
 ## Reference
 
