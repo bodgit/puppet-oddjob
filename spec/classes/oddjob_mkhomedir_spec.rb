@@ -19,7 +19,9 @@ describe 'oddjob::mkhomedir' do
   on_supported_os.each do |os, facts|
     context "on #{os}" do
       let(:facts) do
-        facts
+        facts.merge({
+          :dbus_startup_provider => 'init',
+        })
       end
 
       context 'without oddjob class included' do
