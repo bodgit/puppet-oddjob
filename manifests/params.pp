@@ -9,7 +9,7 @@ class oddjob::params {
       $service_name           = 'oddjobd'
     }
     default: {
-      fail("The ${module_name} module is not supported on an ${::osfamily} based system.") # lint:ignore:80chars
+      fail("The ${module_name} module is not supported on an ${::osfamily} based system.")
     }
   }
 }

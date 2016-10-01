@@ -4,7 +4,7 @@ class oddjob::mkhomedir (
 ) inherits ::oddjob::params {
 
   if ! defined(Class['::oddjob']) {
-    fail('You must include the oddjob base class before using the oddjob::mkhomedir class') # lint:ignore:80chars
+    fail('You must include the oddjob base class before using the oddjob::mkhomedir class')
   }
 
   validate_string($package_name)

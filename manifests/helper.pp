@@ -5,7 +5,7 @@ define oddjob::helper (
 ) {
 
   if ! defined(Class['::oddjob']) {
-    fail('You must include the oddjob base class before using any oddjob defined resources') # lint:ignore:80chars
+    fail('You must include the oddjob base class before using any oddjob defined resources')
   }
 
   validate_string($content)
