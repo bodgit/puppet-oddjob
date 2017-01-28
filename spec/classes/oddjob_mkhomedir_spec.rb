@@ -31,8 +31,6 @@ describe 'oddjob::mkhomedir' do
           super() + ' include ::oddjob'
         end
 
-        it { should contain_anchor('oddjob::mkhomedir::begin') }
-        it { should contain_anchor('oddjob::mkhomedir::end') }
         it { should contain_class('oddjob::mkhomedir') }
         it { should contain_class('oddjob::mkhomedir::config') }
         it { should contain_class('oddjob::mkhomedir::install') }

@@ -22,8 +22,6 @@ describe 'oddjob' do
         facts
       end
 
-      it { should contain_anchor('oddjob::begin') }
-      it { should contain_anchor('oddjob::end') }
       it { should contain_class('oddjob') }
       it { should contain_class('oddjob::config') }
       it { should contain_class('oddjob::install') }

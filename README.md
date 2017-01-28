@@ -9,39 +9,29 @@ Tested with Travis CI
 
 #### Table of Contents
 
-1. [Overview](#overview)
-2. [Module Description - What the module does and why it is useful](#module-description)
-3. [Setup - The basics of getting started with oddjob](#setup)
+1. [Description](#description)
+2. [Setup - The basics of getting started with oddjob](#setup)
     * [What oddjob affects](#what-oddjob-affects)
     * [Beginning with oddjob](#beginning-with-oddjob)
-4. [Usage - Configuration options and additional functionality](#usage)
-    * [Classes and Defined Types](#classes-and-defined-types)
-        * [Class: oddjob](#class-oddjob)
-        * [Class: oddjob::mkhomedir](#class-oddjobmkhomedir)
-        * [Defined Type: oddjob::helper](#defined-type-oddjobhelper)
-    * [Examples](#examples)
-5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
+3. [Usage - Configuration options and additional functionality](#usage)
+4. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
 5. [Limitations - OS compatibility, etc.](#limitations)
 6. [Development - Guide for contributing to the module](#development)
 
-## Overview
+## Description
 
 This module manages oddjob, a D-Bus service which performs random tasks.
-
-## Module Description
-
-This module installs and manages the oddjob D-Bus service and the mkhomedir
-oddjob helper.
 
 ## Setup
 
 ### What oddjob affects
 
-* The package(s) containing the oddjob software.
-* The service controlling the oddjob daemon.
-* Configuration for adding oddjob to the D-Bus system bus.
+This module installs and manages the oddjob D-Bus service and the mkhomedir
+oddjob helper.
 
 ### Beginning with oddjob
+
+In the very simplest case, you can just include the following:
 
 ```puppet
 include ::dbus
@@ -50,54 +40,7 @@ include ::oddjob
 
 ## Usage
 
-### Classes and Defined Types
-
-#### Class: `oddjob`
-
-**Parameters within `oddjob`:**
-
-##### `conf_dir`
-
-The configuration directory for helpers, usually `/etc/oddjob.conf.d`.
-
-##### `package_name`
-
-The name of the package to install that provides the oddjob software.
-
-##### `service_name`
-
-The name of the service managing the `oddjobd` daemon.
-
-#### Class: `oddjob::mkhomedir`
-
-**Parameters within `oddjob::mkhomedir`:**
-
-##### `package_name`
-
-The name of the package to install that provides the oddjob mkhomedir helper.
-
-#### Defined Type: `oddjob::helper`
-
-**Parameters within `oddjob::helper`:**
-
-##### `content`
-
-The contents of the oddjob helper configuration file.
-
-##### `dbus_content`
-
-The optional contents of a D-Bus system bus configuration file.
-
-##### `name`
-
-The name will be used to construct the filename for the helper configuration
-file of the form `${conf_dir}/oddjobd-${name}.conf`. If a D-Bus system bus
-configuration file is desired the filename will be of the form
-`oddjob-${name}.conf` usually under `/etc/dbus-1/system.d`.
-
-### Examples
-
-To install and enable the mkhomedir oddjob helper:
+To install the mkhomedir Oddjob job:
 
 ```puppet
 include ::dbus
@@ -105,46 +48,33 @@ include ::oddjob
 include ::oddjob::mkhomedir
 ```
 
-It's then necessary to enable the `pam_oddjob_mkhomedir.so` PAM module somehow,
-which can require `Class['::oddjob::mkhomedir']` as a dependency.
+You will then likely want to configure the PAM stack to utilise this.
 
 ## Reference
 
-### Classes
-
-#### Public Classes
-
-* [`oddjob`](#class-oddjob): Main class for installing the oddjob software.
-* [`oddjob::mkhomedir`](#class-oddjobmkhomedir): Main class for installing the
-  mkhomedir oddjob helper.
-
-#### Private Classes
-
-* `oddjob::config`: Handles oddjob configuration.
-* `oddjob::install`: Handles oddjob installation.
-* `oddjob::params`: Different configuration data for different systems.
-* `oddjob::service`: Handles starting the oddjobd daemon.
-* `oddjob::mkhomedir::config`: Handles mkhomedir oddjob helper configuration.
-* `oddjob::mkhomedir::install`: Handles mkhomedir oddjob helper installation.
-
-### Defined Types
-
-#### Public Defined Types
-
-* [`oddjob::helper`](#defined-type-oddjobhelper): Installs per-helper
-  configuration and optionally D-Bus system bus configuration.
+The reference documentation is generated with
+[puppet-strings](https://github.com/puppetlabs/puppet-strings) and the latest
+version of the documentation is hosted at
+[https://bodgit.github.io/puppet-oddjob/](https://bodgit.github.io/puppet-oddjob/).
 
 ## Limitations
 
-This module has been built on and tested against Puppet 3.0 and higher.
+This module has been built on and tested against Puppet 4.4.0 and higher.
 
 The module has been tested on:
 
-* RedHat/CentOS Enterprise Linux 6/7
-
-Testing on other platforms has been light and cannot be guaranteed.
+* RedHat Enterprise Linux 6/7
 
 ## Development
+
+The module has both [rspec-puppet](http://rspec-puppet.com) and
+[beaker-rspec](https://github.com/puppetlabs/beaker-rspec) tests. Run them
+with:
+
+```
+$ bundle exec rake test
+$ PUPPET_INSTALL_TYPE=agent PUPPET_INSTALL_VERSION=x.y.z bundle exec rake beaker:<nodeset>
+```
 
 Please log issues or pull requests at
 [github](https://github.com/bodgit/puppet-oddjob).

@@ -1,4 +1,4 @@
-#
+# @!visibility private
 class oddjob::params {
 
   case $::osfamily {

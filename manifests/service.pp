@@ -1,4 +1,4 @@
-#
+# @!visibility private
 class oddjob::service {
 
   service { $::oddjob::service_name:
