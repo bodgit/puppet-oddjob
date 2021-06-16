@@ -1,7 +1,7 @@
 # @!visibility private
 class oddjob::params {
 
-  case $::osfamily {
+  case $facts['os']['family'] {
     'RedHat': {
       $conf_dir               = '/etc/oddjobd.conf.d'
       $mkhomedir_package_name = 'oddjob-mkhomedir'
@@ -9,7 +9,7 @@ class oddjob::params {
       $service_name           = 'oddjobd'
     }
     default: {
-      fail("The ${module_name} module is not supported on an ${::osfamily} based system.")
+      fail("The ${module_name} module is not supported on an ${facts['os']['family']} based system.")
     }
   }
 }
