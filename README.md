@@ -63,17 +63,18 @@ This module has been built on and tested against Puppet 5 and higher.
 
 The module has been tested on:
 
-* RedHat Enterprise Linux 6/7
+* Red Hat/CentOS Enterprise Linux 6/7/8
 
 ## Development
 
-The module has both [rspec-puppet](http://rspec-puppet.com) and
-[beaker-rspec](https://github.com/puppetlabs/beaker-rspec) tests. Run them
+The module relies on [PDK](https://puppet.com/docs/pdk/1.x/pdk.html) and has
+both [rspec-puppet](http://rspec-puppet.com) and
+[Litmus](https://github.com/puppetlabs/puppet_litmus) tests. Run them
 with:
 
 ```
-$ bundle exec rake test
-$ PUPPET_INSTALL_TYPE=agent PUPPET_INSTALL_VERSION=x.y.z bundle exec rake beaker:<nodeset>
+$ bundle exec rake spec
+$ bundle exec rake litmus:*
 ```
 
 Please log issues or pull requests at
