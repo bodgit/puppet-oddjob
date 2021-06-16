@@ -59,7 +59,7 @@ version of the documentation is hosted at
 
 ## Limitations
 
-This module has been built on and tested against Puppet 4.4.0 and higher.
+This module has been built on and tested against Puppet 5 and higher.
 
 The module has been tested on:
 
