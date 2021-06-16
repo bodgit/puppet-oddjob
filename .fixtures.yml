@@ -1,3 +1,10 @@
 fixtures:
   symlinks:
     oddjob: "#{source_dir}"
+  forge_modules:
+    dbus:
+      repo: "bodgit/dbus"
+      ref: "3.0.0"
+    stdlib:
+      repo: "puppetlabs/stdlib"
+      ref: "7.1.0"

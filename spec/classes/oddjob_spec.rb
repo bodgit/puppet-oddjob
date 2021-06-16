@@ -6,21 +6,13 @@ describe 'oddjob' do
     'include ::dbus'
   end
 
-  context 'on unsupported distributions' do
-    let(:facts) do
-      {
-        :osfamily => 'Unsupported'
-      }
-    end
-
-    it { expect { should compile }.to raise_error(/not supported on an Unsupported/) }
-  end
-
   on_supported_os.each do |os, facts|
-    context "on #{os}", :compile do
+    context "on #{os}" do
       let(:facts) do
         facts
       end
+
+      it { should compile.with_all_deps }
 
       it { should contain_class('oddjob') }
       it { should contain_class('oddjob::config') }

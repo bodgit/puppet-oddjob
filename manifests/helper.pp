@@ -19,9 +19,7 @@ define oddjob::helper (
   String           $job          = $title,
 ) {
 
-  if ! defined(Class['::oddjob']) {
-    fail('You must include the oddjob base class before using any oddjob defined resources')
-  }
+  include oddjob
 
   if $dbus_content {
     ::dbus::system { "oddjob-${job}":

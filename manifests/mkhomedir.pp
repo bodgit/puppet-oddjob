@@ -12,9 +12,7 @@ class oddjob::mkhomedir (
   String $package_name = $::oddjob::params::mkhomedir_package_name,
 ) inherits ::oddjob::params {
 
-  if ! defined(Class['::oddjob']) {
-    fail('You must include the oddjob base class before using the oddjob::mkhomedir class')
-  }
+  include oddjob
 
   contain ::oddjob::mkhomedir::install
   contain ::oddjob::mkhomedir::config

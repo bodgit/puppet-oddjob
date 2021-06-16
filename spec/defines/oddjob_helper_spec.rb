@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe 'oddjob::helper' do
+  let(:pre_condition) do
+    'include ::dbus'
+  end
+
   let(:title) do
     'test'
   end
@@ -17,33 +21,28 @@ describe 'oddjob::helper' do
         facts
       end
 
-      context 'without oddjob class included' do
-        it { expect { should compile }.to raise_error(/must include the oddjob base class/) }
+      context 'and no dbus specified' do
+        it { should compile.with_all_deps }
+
+        it { should_not contain_dbus__system('oddjob-test') }
+        it { should contain_file('/etc/oddjobd.conf.d/oddjobd-test.conf') }
+        it { should contain_oddjob__helper('test') }
       end
 
-      context 'with oddjob class included' do
-        let(:pre_condition) do
-          'include ::dbus include ::oddjob'
+      context 'and dbus specified' do
+        let(:params) do
+          super().merge(
+            {
+              :dbus_content => 'test',
+            }
+          )
         end
 
-        context 'and no dbus specified', :compile do
-          it { should contain_file('/etc/oddjobd.conf.d/oddjobd-test.conf') }
-          it { should contain_oddjob__helper('test') }
-        end
+        it { should compile.with_all_deps }
 
-        context 'and dbus specified', :compile do
-          let(:params) do
-            super().merge(
-              {
-                :dbus_content => 'test',
-              }
-            )
-          end
-
-          it { should contain_dbus__system('oddjob-test') }
-          it { should contain_file('/etc/oddjobd.conf.d/oddjobd-test.conf') }
-          it { should contain_oddjob__helper('test') }
-        end
+        it { should contain_dbus__system('oddjob-test') }
+        it { should contain_file('/etc/oddjobd.conf.d/oddjobd-test.conf') }
+        it { should contain_oddjob__helper('test') }
       end
     end
   end
