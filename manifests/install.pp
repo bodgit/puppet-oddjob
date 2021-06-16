@@ -1,7 +1,7 @@
 # @!visibility private
 class oddjob::install {
 
-  package { $::oddjob::package_name:
+  package { $oddjob::package_name:
     ensure => present,
   }
 }

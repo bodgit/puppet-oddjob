@@ -1,7 +1,7 @@
 # @!visibility private
 class oddjob::config {
 
-  ::dbus::system { 'oddjob':
+  dbus::system { 'oddjob':
     content => file("${module_name}/oddjob.conf"),
   }
 
@@ -21,14 +21,14 @@ class oddjob::config {
     content => file("${module_name}/oddjobd.conf"),
   }
 
-  file { $::oddjob::conf_dir:
+  file { $oddjob::conf_dir:
     ensure => directory,
     owner  => 0,
     group  => 0,
     mode   => '0644',
   }
 
-  ::oddjob::helper { 'introspection':
+  oddjob::helper { 'introspection':
     content => file("${module_name}/oddjobd-introspection.conf"),
   }
 }

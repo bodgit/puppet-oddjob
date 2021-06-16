@@ -34,8 +34,8 @@ oddjob helper.
 In the very simplest case, you can just include the following:
 
 ```puppet
-include ::dbus
-include ::oddjob
+include dbus
+include oddjob
 ```
 
 ## Usage
@@ -43,9 +43,9 @@ include ::oddjob
 To install the mkhomedir Oddjob job:
 
 ```puppet
-include ::dbus
-include ::oddjob
-include ::oddjob::mkhomedir
+include dbus
+include oddjob
+include oddjob::mkhomedir
 ```
 
 You will then likely want to configure the PAM stack to utilise this.
