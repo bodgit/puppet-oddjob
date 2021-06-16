@@ -1,14 +1,15 @@
 require 'spec_helper_acceptance'
 
 describe 'oddjob' do
-  it 'works with no errors' do
-    pp = <<-EOS
-      include ::dbus
-      include ::oddjob
-    EOS
+  let(:pp) do
+    <<-MANIFEST
+      include dbus
+      include oddjob
+    MANIFEST
+  end
 
-    apply_manifest(pp, catch_failures: true)
-    apply_manifest(pp, catch_changes: true)
+  it 'applies idempotently' do
+    idempotent_apply(pp)
   end
 
   describe package('oddjob') do

@@ -1,11 +1,11 @@
 require 'spec_helper_acceptance'
 
 describe 'oddjob::mkhomedir' do
-  it 'works with no errors' do
-    pp = <<-EOS
-      include ::dbus
-      include ::oddjob
-      include ::oddjob::mkhomedir
+  let(:pp) do
+    <<-MANIFEST
+      include dbus
+      include oddjob
+      include oddjob::mkhomedir
 
       group { 'test':
         ensure => present,
@@ -20,10 +20,11 @@ describe 'oddjob::mkhomedir' do
         uid        => 2000,
         require    => Group['test'],
       }
-    EOS
+    MANIFEST
+  end
 
-    apply_manifest(pp, catch_failures: true)
-    apply_manifest(pp, catch_changes: true)
+  it 'applies idempotently' do
+    idempotent_apply(pp)
   end
 
   describe package('oddjob-mkhomedir') do
