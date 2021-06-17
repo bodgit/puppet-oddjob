@@ -9,8 +9,8 @@
 #
 # @see puppet_classes::oddjob oddjob
 class oddjob::mkhomedir (
-  String $package_name = $oddjob::params::mkhomedir_package_name,
-) inherits oddjob::params {
+  String $package_name,
+) {
 
   include oddjob
 

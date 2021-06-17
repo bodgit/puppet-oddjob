@@ -1,1 +1,6 @@
---- {}
+---
+oddjob::conf_dir: '/etc/oddjobd.conf.d'
+oddjob::package_name: 'oddjob'
+oddjob::service_name: 'oddjobd'
+
+oddjob::mkhomedir::package_name: 'oddjob-mkhomedir'

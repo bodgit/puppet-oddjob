@@ -12,10 +12,10 @@
 # @see puppet_classes::oddjob::mkhomedir oddjob::mkhomedir
 # @see puppet_defined_types::oddjob::helper oddjob::helper
 class oddjob (
-  Stdlib::Absolutepath $conf_dir     = $oddjob::params::conf_dir,
-  String               $package_name = $oddjob::params::package_name,
-  String               $service_name = $oddjob::params::service_name,
-) inherits oddjob::params {
+  Stdlib::Absolutepath $conf_dir,
+  String               $package_name,
+  String               $service_name,
+) {
 
   contain oddjob::install
   contain oddjob::config
