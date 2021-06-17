@@ -62,11 +62,6 @@
       <div id="content"><h1>Puppet Class: oddjob</h1>
 <div class="box_info">
   
-  <dl>
-    <dt>Inherits:</dt>
-    <dd><span class='object_link'>oddjob::params</span></dd>
-  </dl>
-  
   
   <dl>
     <dt>Defined in:</dt>
@@ -111,8 +106,6 @@
         <span class='type'>(<tt>Stdlib::Absolutepath</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>$oddjob::params::conf_dir</tt>)</em>
-      
       
         &mdash;
         <div class='inline'>
@@ -129,8 +122,6 @@
         <span class='type'>(<tt>String</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>$oddjob::params::package_name</tt>)</em>
-      
       
         &mdash;
         <div class='inline'>
@@ -146,8 +137,6 @@
       
         <span class='type'>(<tt>String</tt>)</span>
       
-      
-        <em class="default">(defaults to: <tt>$oddjob::params::service_name</tt>)</em>
       
       
         &mdash;
@@ -195,10 +184,10 @@
         <pre class="code"><span class="info file"># File 'manifests/init.pp', line 14</span>
 
 class oddjob (
-  Stdlib::Absolutepath $conf_dir     = $oddjob::params::conf_dir,
-  String               $package_name = $oddjob::params::package_name,
-  String               $service_name = $oddjob::params::service_name,
-) inherits oddjob::params {
+  Stdlib::Absolutepath $conf_dir,
+  String               $package_name,
+  String               $service_name,
+) {
 
   contain oddjob::install
   contain oddjob::config

@@ -62,11 +62,6 @@
       <div id="content"><h1>Puppet Class: oddjob::mkhomedir</h1>
 <div class="box_info">
   
-  <dl>
-    <dt>Inherits:</dt>
-    <dd><span class='object_link'>oddjob::params</span></dd>
-  </dl>
-  
   
   <dl>
     <dt>Defined in:</dt>
@@ -112,8 +107,6 @@
         <span class='type'>(<tt>String</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>$oddjob::params::mkhomedir_package_name</tt>)</em>
-      
       
         &mdash;
         <div class='inline'>
@@ -156,8 +149,8 @@
         <pre class="code"><span class="info file"># File 'manifests/mkhomedir.pp', line 11</span>
 
 class oddjob::mkhomedir (
-  String $package_name = $oddjob::params::mkhomedir_package_name,
-) inherits oddjob::params {
+  String $package_name,
+) {
 
   include oddjob
 
