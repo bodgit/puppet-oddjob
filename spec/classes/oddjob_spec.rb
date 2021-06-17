@@ -16,7 +16,6 @@ describe 'oddjob' do
       it { is_expected.to contain_class('oddjob') }
       it { is_expected.to contain_class('oddjob::config') }
       it { is_expected.to contain_class('oddjob::install') }
-      it { is_expected.to contain_class('oddjob::params') }
       it { is_expected.to contain_class('oddjob::service') }
       it { is_expected.to contain_dbus__system('oddjob') }
       it { is_expected.to contain_file('/etc/oddjob') }
