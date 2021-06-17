@@ -1,17 +1,15 @@
 # oddjob
 
-Tested with Travis CI
-
-[![Build Status](https://travis-ci.org/bodgit/puppet-oddjob.svg?branch=master)](https://travis-ci.org/bodgit/puppet-oddjob)
-[![Coverage Status](https://coveralls.io/repos/bodgit/puppet-oddjob/badge.svg?branch=master&service=github)](https://coveralls.io/github/bodgit/puppet-oddjob?branch=master)
-[![Puppet Forge](http://img.shields.io/puppetforge/v/bodgit/oddjob.svg)](https://forge.puppetlabs.com/bodgit/oddjob)
-[![Dependency Status](https://gemnasium.com/bodgit/puppet-oddjob.svg)](https://gemnasium.com/bodgit/puppet-oddjob)
+[![Build Status](https://img.shields.io/github/workflow/status/bodgit/puppet-oddjob/Test)](https://github.com/bodgit/puppet-oddjob/actions?query=workflow%3ATest)
+[![Codecov](https://img.shields.io/codecov/c/github/bodgit/puppet-oddjob)](https://codecov.io/gh/bodgit/puppet-oddjob)
+[![Puppet Forge version](http://img.shields.io/puppetforge/v/bodgit/oddjob)](https://forge.puppetlabs.com/bodgit/oddjob)
+[![Puppet Forge downloads](https://img.shields.io/puppetforge/dt/bodgit/oddjob)](https://forge.puppetlabs.com/bodgit/oddjob)
+[![Puppet Forge - PDK version](https://img.shields.io/puppetforge/pdk-version/bodgit/oddjob)](https://forge.puppetlabs.com/bodgit/oddjob)
 
 #### Table of Contents
 
 1. [Description](#description)
 2. [Setup - The basics of getting started with oddjob](#setup)
-    * [What oddjob affects](#what-oddjob-affects)
     * [Beginning with oddjob](#beginning-with-oddjob)
 3. [Usage - Configuration options and additional functionality](#usage)
 4. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
@@ -22,12 +20,9 @@ Tested with Travis CI
 
 This module manages oddjob, a D-Bus service which performs random tasks.
 
+RHEL/CentOS is supported using Puppet 5 or later.
+
 ## Setup
-
-### What oddjob affects
-
-This module installs and manages the oddjob D-Bus service and the mkhomedir
-oddjob helper.
 
 ### Beginning with oddjob
 
@@ -55,7 +50,8 @@ You will then likely want to configure the PAM stack to utilise this.
 The reference documentation is generated with
 [puppet-strings](https://github.com/puppetlabs/puppet-strings) and the latest
 version of the documentation is hosted at
-[https://bodgit.github.io/puppet-oddjob/](https://bodgit.github.io/puppet-oddjob/).
+[https://bodgit.github.io/puppet-oddjob/](https://bodgit.github.io/puppet-oddjob/)
+and available also in the [REFERENCE.md](https://github.com/bodgit/puppet-oddjob/blob/main/REFERENCE.md).
 
 ## Limitations
 
